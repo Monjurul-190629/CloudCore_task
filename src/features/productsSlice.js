@@ -1,4 +1,6 @@
-const { createSlice } = require("@reduxjs/toolkit")
+import { productApi } from "@/lib/productApi"
+
+const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit")
 
 
 const initialState = {
@@ -8,6 +10,11 @@ const initialState = {
     error : ''
 }
 
+export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
+    const result = await productApi();
+    const products = result.data.data;
+    return products;
+})
 
 
 const productsSlice = createSlice({
