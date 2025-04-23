@@ -12,7 +12,7 @@ const initialState = {
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
     const result = await productApi();
-    const products = result.data.data;
+    const products = result.data.data.data;
     return products;
 })
 
@@ -40,4 +40,4 @@ const productsSlice = createSlice({
 })
 
 
-export default productsSlice;
+export default productsSlice.reducer;
