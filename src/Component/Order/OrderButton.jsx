@@ -4,6 +4,7 @@ import { Fragment, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { placeOrder } from '@/features/orderSlice';
 import Swal from 'sweetalert2';
+import Loading from '@/Loading/Loading';
 
 const OrderModal = ({ product }) => {
 
@@ -36,6 +37,8 @@ const OrderModal = ({ product }) => {
         };
 
         const result = await dispatch(placeOrder(orderData));
+
+        if(placeOrder.pending.match(result)) return <Loading/>
 
         if (placeOrder.fulfilled.match(result)) {
             Swal.fire({

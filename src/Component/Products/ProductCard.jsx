@@ -9,13 +9,17 @@ const ProductCard = ({ product }) => {
 
     return (
         <div className="bg-gray-100 shadow-xl rounded-2xl p-4">
-            <Image
-                src={imageUrl}
-                alt={product.name}
-                width={500}
-                height={192}
-                className="w-full h-48 object-cover rounded-xl mb-3"
-            />
+            <div className="relative w-full h-48 mb-3">
+                <Image
+                    src={imageUrl}
+                    alt={product.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                    className="object-cover"
+                    priority
+                />
+            </div>
+
 
             <h3 className="text-xl font-semibold my-1">{product.name}</h3>
             <p className="text-sm text-gray-700 my-2  text-justify line-clamp-4">{product.short_desc}</p>
