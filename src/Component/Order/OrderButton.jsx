@@ -38,7 +38,7 @@ const OrderModal = ({ product }) => {
 
         const result = await dispatch(placeOrder(orderData));
 
-        if(placeOrder.pending.match(result)) return <Loading/>
+        if (placeOrder.pending.match(result)) return <Loading />
 
         if (placeOrder.fulfilled.match(result)) {
             Swal.fire({
@@ -47,7 +47,7 @@ const OrderModal = ({ product }) => {
                 icon: "success"
             });
             setIsOpen(false);
-        } 
+        }
         else {
             Swal.fire({
                 title: "Sorry!",
@@ -61,10 +61,11 @@ const OrderModal = ({ product }) => {
         <>
             <button
                 onClick={() => setIsOpen(true)}
-                className="px-8 border border-gray-500 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white transition"
+                className="w-full px-4 lg:px-8 py-2 rounded-lg bg-blue-700 hover:bg-blue-800 text-white border border-gray-500 transition"
             >
-                Place Order
+                Order
             </button>
+
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>

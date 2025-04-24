@@ -53,7 +53,7 @@ export default function Navbar() {
                         <Link href="/" className="hover:text-indigo-600 transition">
                             Home
                         </Link>
-                        <Link href="/products" className="hover:text-indigo-600 transition">
+                        <Link href="/product" className="hover:text-indigo-600 transition">
                             Products
                         </Link>
                         <Link href="/order" className="hover:text-indigo-600 transition">

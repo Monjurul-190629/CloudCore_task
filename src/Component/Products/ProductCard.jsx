@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useMemo, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import OrderModal from '../Order/OrderButton';
 
 const ProductCard = ({ product }) => {
 
-    const imageUrl = `https://admin.refabry.com/storage/product/${product.image}`;
+    const imageUrl = useMemo(() => `https://admin.refabry.com/storage/product/${product.image}`, [product.image]);
 
     return (
         <div className="bg-gray-100 shadow-xl rounded-2xl p-4">
@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
                     alt={product.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    className="object-cover"
+                    className="object-cover rounded-xl"
                     priority
                 />
             </div>
@@ -28,17 +28,21 @@ const ProductCard = ({ product }) => {
                 <span className="text-md font-semibold text-gray-800">{product.category?.name}</span>
             </div>
 
-            <div className="flex gap-3 mt-4">
-                <div className="flex-1  transition">
+            <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                <div className="flex-1">
                     <OrderModal product={product} />
                 </div>
-                <button className="flex-1 border border-gray-500 py-2 rounded-lg bg-gray-500 hover:bg-gray-700 text-white transition">
-                    <Link href={`product/${product.id}`}>View Details</Link>
-                </button>
+                <Link
+                    href={`/product/${product.id}`}
+                    className="flex-1 text-center py-2 rounded-lg bg-gray-500 hover:bg-gray-700 text-white border border-gray-500 transition"
+                >
+                    View Details
+                </Link>
             </div>
+
 
         </div>
     );
 };
 
-export default ProductCard;
+export default memo(ProductCard);
