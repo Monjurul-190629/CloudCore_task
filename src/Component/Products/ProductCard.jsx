@@ -5,7 +5,9 @@ import OrderModal from '../Order/OrderButton';
 
 const ProductCard = ({ product }) => {
 
-    const imageUrl = useMemo(() => `https://admin.refabry.com/storage/product/${product.image}`, [product.image]);
+    const { id, name, short_desc, price, image, category } = product;
+
+    const imageUrl = useMemo(() => `https://admin.refabry.com/storage/product/${image}`, [image]);
 
     return (
         <div className="bg-gray-100 shadow-xl rounded-2xl p-4">
@@ -21,11 +23,11 @@ const ProductCard = ({ product }) => {
             </div>
 
 
-            <h3 className="text-xl font-semibold my-1">{product.name}</h3>
-            <p className="text-sm text-gray-700 my-2  text-justify line-clamp-4">{product.short_desc}</p>
+            <h3 className="text-xl font-semibold my-1">{name}</h3>
+            <p className="text-sm text-gray-700 my-2  text-justify line-clamp-4">{short_desc}</p>
             <div className="flex justify-between items-center my-2">
-                <span className="text-green-700 font-bold text-md">{product.price} tk</span>
-                <span className="text-md font-semibold text-gray-800">{product.category?.name}</span>
+                <span className="text-green-700 font-bold text-md">{price} tk</span>
+                <span className="text-md font-semibold text-gray-800">{category?.name}</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 mt-4">
@@ -33,7 +35,7 @@ const ProductCard = ({ product }) => {
                     <OrderModal product={product} />
                 </div>
                 <Link
-                    href={`/product/${product.id}`}
+                    href={`/product/${id}`}
                     className="flex-1 text-center py-2 rounded-lg bg-gray-500 hover:bg-gray-700 text-white border border-gray-500 transition"
                 >
                     View Details

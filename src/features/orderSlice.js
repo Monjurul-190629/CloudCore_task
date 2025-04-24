@@ -38,12 +38,7 @@ const orderSlice = createSlice({
     name: 'orders',
     initialState,
     reducers: {
-        resetOrderState: (state) => {
-            state.isPlacing = false;
-            state.isSuccess = false;
-            state.error = null;
-            state.orderResponse = null;
-        }
+        resetOrderState: () => initialState
     },
     extraReducers: (builder) => {
 
