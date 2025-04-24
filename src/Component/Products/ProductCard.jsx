@@ -1,9 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import OrderModal from '../Order/OrderButton';
 
 const ProductCard = ({ product }) => {
-    const imageUrl = `https://admin.refabry.com/storage/product/${product.image}`; 
+
+    const imageUrl = `https://admin.refabry.com/storage/product/${product.image}`;
 
     return (
         <div className="bg-gray-100 shadow-xl rounded-2xl p-4">
@@ -23,11 +25,11 @@ const ProductCard = ({ product }) => {
             </div>
 
             <div className="flex gap-3 mt-4">
-                <button className="flex-1 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
-                    Order Now
-                </button>
+                <div className="flex-1  transition">
+                    <OrderModal product={product} />
+                </div>
                 <button className="flex-1 border border-gray-500 py-2 rounded-lg bg-gray-500 hover:bg-gray-700 text-white transition">
-                    <Link href = {`product/${product.id}`}>View Details</Link>
+                    <Link href={`product/${product.id}`}>View Details</Link>
                 </button>
             </div>
 
