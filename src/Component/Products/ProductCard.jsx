@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ProductCard = ({ product }) => {
     const imageUrl = `https://admin.refabry.com/storage/product/${product.image}`; 
@@ -26,7 +27,7 @@ const ProductCard = ({ product }) => {
                     Order Now
                 </button>
                 <button className="flex-1 border border-gray-500 py-2 rounded-lg bg-gray-500 hover:bg-gray-700 text-white transition">
-                    View Details
+                    <Link href = {`product/${product.id}`}>View Details</Link>
                 </button>
             </div>
 
