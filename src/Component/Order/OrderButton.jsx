@@ -23,6 +23,7 @@ const OrderModal = ({ product }) => {
     // To place order 
 
     const handlePlaceOrder = async () => {
+    
         const orderData = {
             product_ids: String(product.id),
             s_product_qty: customer.s_product_qty,
@@ -107,28 +108,34 @@ const OrderModal = ({ product }) => {
                                             placeholder="Name"
                                             className="border p-2 w-full rounded"
                                             onChange={(e) => setCustomer({ ...customer, name: e.target.value })}
+                                            required
                                         />
                                         <input
                                             type="text"
                                             placeholder="Phone"
                                             className="border p-2 w-full rounded"
                                             onChange={(e) => setCustomer({ ...customer, phone: e.target.value })}
+                                            required
                                         />
                                         <input
                                             type="text"
                                             placeholder="Address"
                                             className="border p-2 w-full rounded"
                                             onChange={(e) => setCustomer({ ...customer, address: e.target.value })}
+                                            required
                                         />
                                         <input
                                             type="text"
                                             placeholder="Product Quantity"
                                             className="border p-2 w-full rounded"
                                             onChange={(e) => setCustomer({ ...customer, s_product_qty: e.target.value })}
+                                            required
                                         />
+                                       
                                         <button
                                             onClick={handlePlaceOrder}
                                             className="bg-green-600 text-white w-full py-2 rounded hover:bg-green-700"
+                                            disabled={!(customer.name && customer.address && customer.phone && customer.s_product_qty)}
                                         >
                                             Confirm Order
                                         </button>
