@@ -19,6 +19,8 @@ const OrderModal = ({ product }) => {
         s_product_qty: '',
     });
 
+    // To place order 
+
     const handlePlaceOrder = async () => {
         const orderData = {
             product_ids: String(product.id),
@@ -34,7 +36,6 @@ const OrderModal = ({ product }) => {
         };
 
         const result = await dispatch(placeOrder(orderData));
-        console.log('Order Post Result:', result);
 
         if (placeOrder.fulfilled.match(result)) {
             Swal.fire({
@@ -43,7 +44,8 @@ const OrderModal = ({ product }) => {
                 icon: "success"
             });
             setIsOpen(false);
-        } else {
+        } 
+        else {
             Swal.fire({
                 title: "Sorry!",
                 text: "No order placed!",
@@ -63,7 +65,7 @@ const OrderModal = ({ product }) => {
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
-                    {/* Background Overlay */}
+                    {/* Background */}
                     <Transition
                         show={isOpen}
                         as={Fragment}

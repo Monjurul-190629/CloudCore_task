@@ -1,5 +1,3 @@
-'use client'
-
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from '@/features/productsSlice'
 import orderReducer from '@/features/orderSlice';

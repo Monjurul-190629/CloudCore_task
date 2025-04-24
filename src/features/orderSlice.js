@@ -16,18 +16,18 @@ export const placeOrder = createAsyncThunk(
     'order/placeOrder',
     async (orderData, { rejectWithValue }) => {
       try {
-        console.log('Posting to API with data:', orderData); 
+        //console.log('Posting to API with data:', orderData); 
   
         const response = await axios.post(
           'https://admin.refabry.com/api/public/order/create',
           orderData
         );
   
-        console.log('API Response:', response.data); 
+        //console.log('API Response:', response.data); 
         return response.data;
       } 
       catch (error) {
-        console.error('API Error:', error.response?.data || error.message);
+        //console.error('API Error:', error.response?.data || error.message);
         return rejectWithValue(error.response?.data || error.message);
       }
     }
