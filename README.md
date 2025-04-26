@@ -8,9 +8,6 @@ This is a Next.js project, built with modern React practices including Redux Too
 Getting Started
 To run the project locally:
 
-bash
-Copy
-Edit
 # Install dependencies
 npm install
 # or
